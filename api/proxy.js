@@ -1,9 +1,8 @@
-const express = require('express');
 const axios = require('axios');
+const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3001;
 
-app.get('/proxy', async (req, res) => {
+app.get('/api/proxy', async (req, res) => {
   try {
     const url = req.query.url;
     const response = await axios.get(url, { responseType: 'arraybuffer' });
@@ -14,6 +13,4 @@ app.get('/proxy', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+module.exports = app;
